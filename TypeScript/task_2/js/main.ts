@@ -44,3 +44,15 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
   return new Director();
 }
+
+function isDirector(employee: Director | Teacher): employee is Director {
+  return 'workDirectorTasks' in employee;
+}
+
+function executeWork (employee: Director | Teacher) {
+  if (isDirector(employee)) {
+    console.log(employee.workDirectorTasks());
+  } else {
+    console.log(employee.workTeacherTasks());
+  }
+}
